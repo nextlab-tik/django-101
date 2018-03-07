@@ -1,11 +1,11 @@
 Django 101 Introduction
 =======================
 
-These are the materials and the code snippets used on Django
+These are the materials and the code snippets used in Django
 training sessions presented by [Moez Bouhlel](https://lejenome.github.io/) and
 [Firas Chaaben](https://firchatn.tik.tn/) from [Tik.tn](https://tik.tn).
 
-This repository is composed from different Django apps:
+This repository is composed of different Django apps:
 
 - Demo app containing Hello World example and a responsive contact page.
 - CV app containing an example of Bootstrap based CV page generated from JSON
@@ -29,7 +29,7 @@ agency. We offer the following services:
 - **Software & Application Development:**
   Reliable software highly optimized for your system and your workflow.
 - **IOT:**
-  Turn-key long lasting Big Data backed IOT build and integration solutions.
+  Turn-key long-lasting Big Data backed IOT build and integration solutions.
 - **Cloud & Web Hosting:**
   PaaS hosting solution to meet every need. Top-class server administration
   services.
@@ -37,11 +37,11 @@ agency. We offer the following services:
 For more details, contact us at <contact@tik.tn> or contact [Moez
 Bouhlel](https://lejenome.github.io/) at <bmoez.j@gmail.com>.
 
-Licence
+License
 -------
 
 These materials and code snippets are licensed under the
-[Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/).
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 Copyright © 2016-2018, [Moez Bouhlel](https://lejenome.github.io/)
 (<bmoez.j@gmail.com>) & [Firas Chaaben](https://lejenome.github.io/)
