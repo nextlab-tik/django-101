@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}Weather{% endblock %}
+
+{% block stylesheets %}
+<link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<h1>{{ location.city }}, {{location.country}}</h1>
+<div class="row">
+<p class="col-sm-6">
+  <img src="{% static logo %}" class="img-fluid"/>
+  <strong class="display-1 align-bottom">{{ weather }}<sup style="font-size: 0.4em; top: -1em">°C</sup></strong>
+</p>
+<ul class="col-sm-6 list-unstyled text-muted mt-auto">
+  <li>Humidity: {{ result.atmosphere.humidity }}%</li>
+  <li>Pressure: {{ result.atmosphere.pressure }} nb</li>
+  <li>Wind speed: {{result.wind.speed }} km/h</li>
+</ul>
+</div>
+<ul class="list-inline">
+  {% for forecast in result.item.forecast|slice:":8" %}
+  <li class="list-inline-item text-muted p-3">
+    <div class="text-center">{{ forecast.day }}</div>
+    <img src="{% static forecast.logo %}" class="img-fluid" width="64"/>
+    <div><strong class="float-left">{{ forecast.high }}°</strong> <span class="float-right">{{ forecast.low }}°</span></div>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

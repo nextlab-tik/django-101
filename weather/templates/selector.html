@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_title %}City Selector | Weather{% endblock %}
+
+{% block stylesheets %}
+<link href="{% static 'bootstrap/css/bootstrap.css' %}" rel="stylesheet" />
+<link href="{% static 'jqvmap/jqvmap.css' %}" rel="stylesheet" />
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'jquery.js' %}"></script>
+<script src="{% static 'jqvmap/jquery.vmap.js' %}"></script>
+<script src="{% static 'jqvmap/maps/jquery.vmap.world.js' %}"></script>
+<script src="{% static 'jqvmap/maps/jquery.vmap.tunisia.js' %}"></script>
+<script>
+  $("#vmap").vectorMap({
+    map: 'tunisia',
+    backgroundColor: null,
+    onRegionClick: function(el, code, region) {
+      // console.log("RegionClock:", code, region);
+      window.location += encodeURI(region);
+    },
+  });
+</script>
+{% endblock %}
+
+{% block content %}
+<div id="vmap" style="height: 100vh; width: 100%;"></div>
+{% endblock %}

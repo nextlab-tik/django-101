@@ -1,0 +1,71 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{{ name }} | CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome-all.css' %}" />
+</head>
+
+<body class="container">
+    <div class="row">
+        <div class="col-sm-6 col-12">
+          <h1 class="display-3">{{ name }}</h1>
+          <h3 class="text-muted">{{ headline }}</h3>
+        </div>
+        <div class="col-sm-6 col-12">
+            <ul class="list-unstyled text-right">
+              <li><a href="mailto:{{contact.email}}">{{ contact.email }}</a> <i class="fas fa-fw fa-at"></i></li>
+              <li><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a> <i class="fas fa-fw fa-phone"></i></li>
+              <li><a href="http://{{contact.website}}">{{contact.website}}</a> <i class="fas fa-fw fa-globe"></i></li>
+              <li>{{contact.address }} <i class="fas fa-fw fa-map-marker"></i></li>
+                <li>
+                  <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter/{{accounts.twitter}}">{{accounts.twitter}}</a>
+                  <i class="fab fa-fw fa-github"></i> <a href="https://github.com/{{accounts.github}}">{{accounts.github}}</a>
+                  <i class="fab fa-fw fa-linkedin"></i> <a href="https://linkedin.com/in/{{accounts.linkedin}}">{{accounts.linkedin}}</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <hr />
+    <p class="lead">{{summary}}</p>
+    <h3 class="my-4">Experience</h3>
+
+    <ul class="list-unstyled">
+      {% for exp in experience %}
+      <li>
+        <strong>{{exp.title}}</strong>, {{exp.company}}
+        <div class="text-muted"><em>{{exp.started_at}} - {{exp.ended_at|default:"present"}}</em></div>
+        <p>{{ exp.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    <h3 class="my-4">Skills</h3>
+    <ul class="list-unstyled">
+      <li><strong>Proficiency:</strong> {{skills.proficiency|join:", "}}</li>
+      <li><strong>Familiar:</strong> {{skills.familiar|join:", "}}</li>
+    </ul>
+
+    <h3 class="my-4">Education</h3>
+    <ul class="list-unstyled">
+        {% for edu in education %}
+        <li class="my-2">
+          <strong>{{ edu.title }}</strong>, {{ edu.institut }}
+          <div class="text-muted"><em>{{ edu.started_at }} - {{ edu.ended_at|default:"present" }}</em></div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3 class="my-4">Projects</h3>
+    <ul>
+        <li>{% lorem 20 w %}</li>
+        <li>{% lorem 20 w %}</li>
+    </ul>
+</body>
+
+</html>
