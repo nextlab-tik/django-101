@@ -13,4 +13,4 @@ def cv(request, username='lejenome'):
         raise Http404("cv not found")
     with open(cv_path) as f:
         data = json.load(f)
-    return render(request, "cv.html", {**data})
+    return render(request, "cv.html", data)

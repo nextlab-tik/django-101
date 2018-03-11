@@ -6,7 +6,7 @@ import requests
 def selector(request):
     return render(request, "selector.html")
 
-def index(request, city='sfax'):
+def index(request, city):
     baseurl = "https://query.yahooapis.com/v1/public/yql"
     query = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="{}")'
     result = requests.get(baseurl, params={
@@ -21,6 +21,8 @@ def index(request, city='sfax'):
     logo = result["item"]["condition"]["logo"]
     for forecast in result["item"]["forecast"]:
         forecast["logo"] = weather_status_logo(forecast["text"])
+        forecast["high"] = (int(forecast["high"]) - 32) * 5 // 9
+        forecast["low"] = (int(forecast["low"]) - 32) * 5 // 9
     temp = (int(temp) - 32) * 5 // 9
     location = result["location"]
     return render(request, "index.html", {
