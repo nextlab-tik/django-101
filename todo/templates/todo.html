@@ -1,0 +1,33 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<!-- Credit to: https://www.w3schools.com/howto/howto_js_todolist.asp -->
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'todo.css' %}" />
+</head>
+
+<body>
+
+    <div id="myDIV" class="header">
+      <form action="{% url 'tasks-add' %}" method="post">
+        {% csrf_token %}
+            <input name="title" type="text" id="myInput" placeholder="Task..." required autofocus />
+            <button class="addBtn">Add</button>
+        </form>
+    </div>
+
+    <ul id="myUL">
+      {% for task in tasks %}
+      <li {% if task.done %}class="checked"{% endif %}>
+        <a href="{% url 'tasks-toggle' task.id %}">{{ task.title }}</a>
+        <span class="close"><a href="{% url 'tasks-delete' task.id %}">×</a></span>
+      </li>
+      {% endfor %}
+    </ul>
+
+</body>
+
+</html>

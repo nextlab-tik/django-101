@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'demo',
     'cv',
     'weather',
+    'todo',
 ]
 
 MIDDLEWARE = [

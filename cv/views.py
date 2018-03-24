@@ -8,7 +8,7 @@ import os
 def cv(request, username='lejenome'):
     print(__file__)
     basedir = os.path.dirname(__file__)
-    cv_path = os.path.join(basedir, "data", username + ".json")
+    cv_path = os.path.join(basedir, "users", username + ".json")
     # if not os.path.isfile(cv_path):
     #     raise Http404("cv not found")
     # with open(cv_path) as f:
