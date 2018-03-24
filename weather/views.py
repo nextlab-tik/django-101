@@ -1,5 +1,4 @@
 from django.shortcuts import render
-import requests
 
 # Create your views here.
 
@@ -9,11 +8,17 @@ def selector(request):
 def index(request, city):
     baseurl = "https://query.yahooapis.com/v1/public/yql"
     query = 'select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="{}")'
-    result = requests.get(baseurl, params={
-        "q": query.format(city),
-        "format": "json",
-    })
-    result = result.json()
+    try:
+        import requests
+        result = requests.get(baseurl, params={
+            "q": query.format(city),
+            "format": "json",
+        })
+        result = result.json()
+    except (ImportError, IOError):
+        import json
+        with open("weather/sfax.json") as f:
+            result = json.load(f)
     result = result["query"]["results"]["channel"]
     temp = result["item"]["condition"]["temp"]
     result["item"]["condition"]["logo"] = weather_status_logo(
