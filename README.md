@@ -12,6 +12,7 @@ This repository is composed of different Django apps:
   files.
 - Weather app containing an example of using Yahoo Weather API to generate a
   weather page.
+- TODO List app example.
 
 **Common Django Commands:**
 
