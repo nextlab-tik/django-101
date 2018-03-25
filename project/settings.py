@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'weather',
     'todo',
     'blog',
+    'cvdb',
 ]
 
 MIDDLEWARE = [

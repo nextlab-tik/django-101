@@ -14,6 +14,7 @@ This repository is composed of different Django apps:
   weather page.
 - TODO List app example.
 - Blog app example using markdown to render the content.
+- Database-backed CV app.
 
 **Common Django Commands:**
 

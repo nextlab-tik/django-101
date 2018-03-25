@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^weather/', include('weather.urls')),
     url(r'^todo/', include('todo.urls')),
     url(r'^blog/', include('blog.urls')),
+    url(r'^resume/', include('cvdb.urls')),
     url(r'^', include('demo.urls')),
 ]
 

@@ -1,0 +1,84 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>{{ cv.first_name|title }} {{cv.last_name|title }}| CV</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" />
+    <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome-all.css' %}" />
+</head>
+
+<body class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <img src="{{cv.photo.url }}" class="img-fluid rounded-circle text-center" />
+        </div>
+        <div class="col-sm-5 col-12">
+          <h1 class="display-3">{{ cv.first_name|title }} {{ cv.last_name|title }}</h1>
+          <h3 class="text-muted">{{ cv.headline }}</h3>
+        </div>
+        <div class="col-sm-5 col-12">
+            <ul class="list-unstyled text-right">
+              <li><a href="mailto:{{cv.email}}">{{ cv.email }}</a> <i class="fas fa-fw fa-at"></i></li>
+              <li><a href="tel:{{ cv.phone }}">{{ cv.phone }}</a> <i class="fas fa-fw fa-phone"></i></li>
+              <li><a href="{{cv.website}}">{{cv.website}}</a> <i class="fas fa-fw fa-globe"></i></li>
+              <li>{{cv.address }} <i class="fas fa-fw fa-map-marker"></i></li>
+                <li>
+                  {% if cv.twitter %}
+                  <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter/{{cv.twitter}}">{{cv.twitter}}</a>
+                  {% endif %}
+                  {% if cv.twitter %}
+                  <i class="fab fa-fw fa-github"></i> <a href="https://github.com/{{cv.github}}">{{cv.github}}</a>
+                  {% endif %}
+                  {% if cv.twitter %}
+                  <i class="fab fa-fw fa-linkedin"></i> <a href="https://linkedin.com/in/{{cv.linkedin}}">{{cv.linkedin}}</a>
+                  {% endif %}
+                  {% if cv.facebook %}
+                  <i class="fab fa-fw fa-facebook"></i> <a href="https://facebook.com/in/{{cv.facebook}}">{{cv.facebook}}</a>
+                  {% endif %}
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <hr />
+    <p class="lead">{{cv.summary|linebreaksbr}}</p>
+
+    <h3 class="my-4">Experience</h3>
+
+    <ul class="list-unstyled">
+      {% for exp in experience %}
+      <li>
+        <strong>{{exp.title}}</strong>, {{exp.company}}
+        <div class="text-muted"><em>{{exp.started_at|date:"Y/m"}} - {{exp.ended_at|date:"Y/m"|default:"present"}}</em></div>
+        <p>{{ exp.description }}</p>
+      </li>
+      {% endfor %}
+    </ul>
+    <h3 class="my-4">Skills</h3>
+    <ul class="list-unstyled">
+      <li><strong>Proficiency:</strong> {{skills.proficiency|join:", "}}</li>
+      <li><strong>Familiar:</strong> {{skills.familiar|join:", "}}</li>
+    </ul>
+
+    <h3 class="my-4">Education</h3>
+    <ul class="list-unstyled">
+        {% for edu in education %}
+        <li class="my-2">
+          <strong>{{ edu.title }}</strong>, {{ edu.institute }}
+          <div class="text-muted"><em>{{ edu.started_at|date:"Y" }} - {{ edu.ended_at|date:"Y" }}</em></div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h3 class="my-4">Projects</h3>
+    <ul>
+        <li>{% lorem 20 w %}</li>
+        <li>{% lorem 20 w %}</li>
+    </ul>
+</body>
+
+</html>
