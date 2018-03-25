@@ -21,7 +21,7 @@
 
     <ul id="myUL">
       {% for task in tasks %}
-      <li {% if task.done %}class="checked"{% endif %}>
+      <li {% if task.is_done %}class="checked"{% endif %}>
         <a href="{% url 'tasks-toggle' task.id %}">{{ task.title }}</a>
         <span class="close"><a href="{% url 'tasks-delete' task.id %}">×</a></span>
       </li>
