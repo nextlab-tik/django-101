@@ -6,7 +6,7 @@ class Skill(models.Model):
     def __str__(self):
         return self.name
 
-class CV(models.Model):
+class Person(models.Model):
     username = models.SlugField(max_length=40, unique=True)
     first_name = models.CharField(max_length=40)
     last_name = models.CharField(max_length=40)
@@ -31,7 +31,7 @@ class CV(models.Model):
         return "{} {}".format(self.first_name, self.last_name)
 
 class Experience(models.Model):
-    cv = models.ForeignKey(CV, on_delete=models.CASCADE)
+    cv = models.ForeignKey(Person, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     company = models.CharField(max_length=40)
     description = models.TextField()
@@ -42,7 +42,7 @@ class Experience(models.Model):
         return "{} - {}".format(self.title, self.company)
 
 class Education(models.Model):
-    cv = models.ForeignKey(CV, on_delete=models.CASCADE)
+    cv = models.ForeignKey(Person, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
     institute = models.CharField(max_length=40)
     started_at = models.DateField()

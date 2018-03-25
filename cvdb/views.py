@@ -3,19 +3,19 @@ from django.http.response import HttpResponseNotFound
 from django.http import Http404
 import json
 import os
-from .models import CV, Experience, Education
+from .models import Person, Experience, Education
 
 # Create your views here.
 def cv(request, username='lejenome'):
-    cv = get_object_or_404(CV, username=username)
-    experience = cv.experience_set.all()
-    education = cv.education_set.all()
+    person = get_object_or_404(Person, username=username)
+    experience = person.experience_set.all()
+    education = person.education_set.all()
     return render(request, "cvdb.html", {
-        "cv": cv,
+        "person": person,
         "experience": experience,
         "education": education,
         "skills": {
-            "proficiency": cv.skills_proficiency.all(),
-            "familiar": cv.skills_familiar.all(),
+            "proficiency": person.skills_proficiency.all(),
+            "familiar": person.skills_familiar.all(),
         }
     })

@@ -4,39 +4,40 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>{{ cv.first_name|title }} {{cv.last_name|title }}| CV</title>
+    <title>{{ person.first_name|title }} {{person.last_name|title }}| CV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" />
     <link rel="stylesheet" href="{% static 'fontawesome/css/fontawesome-all.css' %}" />
+    <link rel="stylesheet" href="{% static 'print.css' %}" />
 </head>
 
 <body class="container">
     <div class="row">
-      <div class="col-sm-2">
-        <img src="{{cv.photo.url }}" class="img-fluid rounded-circle text-center" />
+      <div class="col-sm-2 sec-photo">
+        <img src="{{person.photo.url }}" class="img-fluid rounded-circle text-center" />
         </div>
-        <div class="col-sm-5 col-12">
-          <h1 class="display-3">{{ cv.first_name|title }} {{ cv.last_name|title }}</h1>
-          <h3 class="text-muted">{{ cv.headline }}</h3>
+        <div class="col-sm-5 col-12 sec-info">
+          <h1 class="display-3">{{ person.first_name|title }} {{ person.last_name|title }}</h1>
+          <h3 class="text-muted">{{ person.headline }}</h3>
         </div>
-        <div class="col-sm-5 col-12">
+        <div class="col-sm-5 col-12 sec-contact">
             <ul class="list-unstyled text-right">
-              <li><a href="mailto:{{cv.email}}">{{ cv.email }}</a> <i class="fas fa-fw fa-at"></i></li>
-              <li><a href="tel:{{ cv.phone }}">{{ cv.phone }}</a> <i class="fas fa-fw fa-phone"></i></li>
-              <li><a href="{{cv.website}}">{{cv.website}}</a> <i class="fas fa-fw fa-globe"></i></li>
-              <li>{{cv.address }} <i class="fas fa-fw fa-map-marker"></i></li>
+              <li><a href="mailto:{{person.email}}">{{ person.email }}</a> <i class="fas fa-fw fa-at"></i></li>
+              <li><a href="tel:{{ person.phone }}">{{ person.phone }}</a> <i class="fas fa-fw fa-phone"></i></li>
+              <li><a href="{{person.website}}">{{person.website}}</a> <i class="fas fa-fw fa-globe"></i></li>
+              <li>{{person.address }} <i class="fas fa-fw fa-map-marker"></i></li>
                 <li>
-                  {% if cv.twitter %}
-                  <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter/{{cv.twitter}}">{{cv.twitter}}</a>
+                  {% if person.twitter %}
+                  <i class="fab fa-fw fa-twitter"></i> <a href="https://twitter/{{person.twitter}}">{{person.twitter}}</a>
                   {% endif %}
-                  {% if cv.twitter %}
-                  <i class="fab fa-fw fa-github"></i> <a href="https://github.com/{{cv.github}}">{{cv.github}}</a>
+                  {% if person.twitter %}
+                  <i class="fab fa-fw fa-github"></i> <a href="https://github.com/{{person.github}}">{{person.github}}</a>
                   {% endif %}
-                  {% if cv.twitter %}
-                  <i class="fab fa-fw fa-linkedin"></i> <a href="https://linkedin.com/in/{{cv.linkedin}}">{{cv.linkedin}}</a>
+                  {% if person.twitter %}
+                  <i class="fab fa-fw fa-linkedin"></i> <a href="https://linkedin.com/in/{{person.linkedin}}">{{person.linkedin}}</a>
                   {% endif %}
-                  {% if cv.facebook %}
-                  <i class="fab fa-fw fa-facebook"></i> <a href="https://facebook.com/in/{{cv.facebook}}">{{cv.facebook}}</a>
+                  {% if person.facebook %}
+                  <i class="fab fa-fw fa-facebook"></i> <a href="https://facebook.com/in/{{person.facebook}}">{{person.facebook}}</a>
                   {% endif %}
                 </li>
             </ul>
@@ -45,7 +46,7 @@
     </div>
 
     <hr />
-    <p class="lead">{{cv.summary|linebreaksbr}}</p>
+    <p class="lead">{{person.summary|linebreaksbr}}</p>
 
     <h3 class="my-4">Experience</h3>
 
